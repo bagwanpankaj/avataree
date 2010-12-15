@@ -22,3 +22,9 @@
 require 'avataree/helper'
 require 'avataree/image'
 require 'avataree/profile'
+
+#hook for ActionController
+ActionController::Base.send(:include, Avataree::Image)
+ActionController::Base.send(:include, Avataree::Profile)
+#hook for ActionView
+ActionView::Base.send(:include, Avataree::Image)
