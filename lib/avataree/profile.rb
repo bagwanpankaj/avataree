@@ -19,6 +19,28 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'avataree/helper'
-require 'avataree/image'
-require 'avataree/profile'
+require 'json'
+require 'open-uri'
+
+module Avataree
+  
+  module Profile
+    
+    PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
+    
+    def gravatar_profile(email, options = {})
+      email = make_digest(email)
+      email << ".json"
+      params = options.to_param unless options.empty?
+      resulted_path = PROFILE_PATH.dup << email
+      path = [resulted_path, params].compact.join("?")
+      begin
+        JSON.parse(open(path).read)
+      rescue => e
+        puts "I am unable to parse this bad stuff. because\n#{e}"
+      end
+    end
+    
+  end
+  
+end

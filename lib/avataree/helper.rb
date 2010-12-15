@@ -19,6 +19,20 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'avataree/helper'
-require 'avataree/image'
-require 'avataree/profile'
+require 'digest/md5'
+
+module Helper
+  
+  def make_digest(email)
+    Digest::MD5.hexdigest(email)
+  end
+  
+  #fallback method if not defined(i.e if not used with rails)
+
+  Hash.class_eval do
+    def to_param
+      self.collect{|k,v| "#{k}=#{v}"}.join("&")
+    end unless Hash.respond_to?(:to_param)
+  end
+  
+end

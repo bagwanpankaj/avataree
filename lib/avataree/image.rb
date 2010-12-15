@@ -19,6 +19,23 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'avataree/helper'
-require 'avataree/image'
-require 'avataree/profile'
+module Avataree
+  
+  module Image
+    
+    include Helper
+    
+    IMAGES_PATH = "http://www.gravatar.com/avatar/" unless const_defined?("IMAGES_PATH")
+    
+    def gravatar_image_path(email, options = {})
+      email = make_digest(email)
+      email<<".#{options[:extension]}" and options.delete(:extension) if options[:extension]
+      params = options.to_param unless options.empty?
+      resulted_path = IMAGES_PATH.dup << email
+      [resulted_path, params].compact.join("?")
+    end
+    alias_method :gravatar, :gravatar_image_path
+    
+  end
+  
+end
