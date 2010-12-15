@@ -22,7 +22,7 @@ and you avataree will be up and running.
 
 h2. How to use It
 
-yeah.. that sound's a good question.
+yeah that sound's a good question.
 
 in your controller
 
