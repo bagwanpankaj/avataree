@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{avataree}
-  s.version = "0.3.0"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bagwan Pankaj (a.k.a modulo9)"]
@@ -20,7 +20,9 @@ Gem::Specification.new do |s|
     "lib/avataree.rb",
     "lib/avataree/helper.rb",
     "lib/avataree/image.rb",
-    "lib/avataree/profile.rb"
+    "lib/avataree/profile.rb",
+    "lib/avataree/railtie.rb",
+    "lib/avataree/switch.rb"
   ]
   s.homepage = %q{http://github.com/bagwanpankaj/avataree}
   s.licenses = ["MIT"]
