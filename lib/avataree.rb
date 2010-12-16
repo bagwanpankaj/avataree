@@ -19,12 +19,9 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require 'avataree/helper'
-require 'avataree/image'
-require 'avataree/profile'
+# encoding: utf-8
 
-#hook for ActionController
-ActionController::Base.send(:include, Avataree::Image)
-ActionController::Base.send(:include, Avataree::Profile)
-#hook for ActionView
-ActionView::Base.send(:include, Avataree::Image)
+require File.join(File.dirname(__FILE__), *%w[avataree railtie]) if defined?(::Rails::Railtie)
+
+module Avataree
+end

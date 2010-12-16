@@ -19,6 +19,8 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+# encoding: utf-8
+
 require 'json'
 require 'open-uri'
 
@@ -26,7 +28,7 @@ module Avataree
   
   module Profile
     
-    #image path for gravatar if not defined?
+    #image path for gravatar if not defined? 
     PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
     
     #this method returns hash full of information provided by Gravatar.
