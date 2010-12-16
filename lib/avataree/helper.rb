@@ -23,12 +23,13 @@ require 'digest/md5'
 
 module Helper
   
+  #makes MD5 hash of given email
   def make_digest(email)
     Digest::MD5.hexdigest(email)
   end
   
   #fallback method if not defined(i.e if not used with rails)
-
+  #to_param for hash if hash does not respond to it
   Hash.class_eval do
     def to_param
       self.collect{|k,v| "#{k}=#{v}"}.join("&")

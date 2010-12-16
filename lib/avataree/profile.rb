@@ -26,8 +26,18 @@ module Avataree
   
   module Profile
     
+    #image path for gravatar if not defined?
     PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
     
+    #this method returns hash full of information provided by Gravatar.
+    #This hash may contain
+    #Email address marked up with class=email (only available via JS/client-side parsing due to spam-protection measures)
+    # IM accounts (some values only available via JS/client-side parsing due to spam-protection measures)
+    # Phone numbers
+    # Verified accounts 
+    # Name 
+    # Personal Links
+    # Image (main Gravatar) 
     def gravatar_profile(email, options = {})
       email = make_digest(email)
       email << ".json"
@@ -37,7 +47,8 @@ module Avataree
       begin
         JSON.parse(open(path).read)
       rescue => e
-        puts "I am unable to parse this bad stuff. because\n#{e}"
+        {"error" => "unable to parse", "description" => "either no such user is found on gravatar using
+           provided email or some server side error. do check it out.", "errorTrace" => "#{e}"}
       end
     end
     
