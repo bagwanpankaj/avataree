@@ -2,8 +2,6 @@ h1. Avataree
 
 Ruby DSL for Gravatar profile and images.
 
-Can be used in Sinatra, Rails or Standalone.
-
 h2. What is it?
 
 Again I'll repeat that it's a "Ruby DSL for "Gravatar":http://en.gravatar.com profile and images."
