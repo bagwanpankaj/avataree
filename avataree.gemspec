@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{avataree}
-  s.version = "0.4.0"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bagwan Pankaj (a.k.a modulo9)"]
-  s.date = %q{2010-12-17}
+  s.date = %q{2011-01-05}
   s.description = %q{Ruby DSL for Gravatar profile and images}
   s.email = %q{bagwanpankaj@gmail.com}
   s.extra_rdoc_files = [
