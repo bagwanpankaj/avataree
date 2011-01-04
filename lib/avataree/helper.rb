@@ -25,6 +25,15 @@ require 'digest/md5'
 
 module Helper
   
+  class << self
+    attr_accessor :secure_url_services, :url_services 
+  end
+  
+  def self.included(base)
+    self.secure_url_services  = "https://secure.gravatar.com/"
+    self.url_services         = "http://www.gravatar.com/"
+  end
+  
   #makes MD5 hash of given email
   def make_digest(email)
     Digest::MD5.hexdigest(email)

@@ -28,7 +28,7 @@ module Avataree
     include Helper
     
     #image path for gravatar if not defined?
-    IMAGES_PATH = "http://www.gravatar.com/avatar/" unless const_defined?("IMAGES_PATH")
+    # IMAGES_PATH = "http://www.gravatar.com/avatar/" unless const_defined?("IMAGES_PATH")
     
     #this method returns resulted path to be requested to gravatar. takes all argument as a hash
     #options:
@@ -51,9 +51,10 @@ module Avataree
     
     def gravatar_image_path(email, options = {})
       email = make_digest(email)
+      services_url = (options[:secure] ? Helper.secure_url_services : Helper.url_services) and options.delete(:secure)
       email<<".#{options[:extension]}" and options.delete(:extension) if options[:extension]
       params = options.to_param unless options.empty?
-      resulted_path = IMAGES_PATH.dup << email
+      resulted_path = [services_url, "avatar/", email].join("")
       [resulted_path, params].compact.join("?")
     end
     alias_method :gravatar, :gravatar_image_path

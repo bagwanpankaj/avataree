@@ -29,7 +29,7 @@ module Avataree
   module Profile
     
     #image path for gravatar if not defined? 
-    PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
+    # PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
     
     # this method returns hash full of information provided by Gravatar.
     # This hash may contain
@@ -41,10 +41,11 @@ module Avataree
     # Personal Links
     # Image (main Gravatar) 
     def gravatar_profile(email, options = {})
+      services_url = (options[:secure] ? Helper.secure_url_services : Helper.url_services) and options.delete(:secure)
       email = make_digest(email)
       email << ".json"
       params = options.to_param unless options.empty?
-      resulted_path = PROFILE_PATH.dup << email
+      resulted_path = services_url << email
       path = [resulted_path, params].compact.join("?")
       begin
         JSON.parse(open(path).read)
