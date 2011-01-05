@@ -9,13 +9,13 @@ module Avataree
     
     def enable_for_controller!
       #hook for ActionController
-      ActionController::Base.send(:include, Avataree::Image)
-      ActionController::Base.send(:include, Avataree::Profile)
+      ActionController::Base.send(:include, Avataree::ImageServices)
+      ActionController::Base.send(:include, Avataree::ProfileServices)
     end
     
     def enable_for_views!
       #hook for ActionView
-      ActionView::Base.send(:include, Avataree::Image)
+      ActionView::Base.send(:include, Avataree::ImageServices)
     end
 
   end

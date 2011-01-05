@@ -23,7 +23,7 @@
 
 module Avataree
   
-  module Image
+  module ImageServices
     
     include Helper
     

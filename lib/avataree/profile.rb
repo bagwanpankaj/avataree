@@ -26,7 +26,7 @@ require 'open-uri'
 
 module Avataree
   
-  module Profile
+  module ProfileServices
     
     #image path for gravatar if not defined? 
     # PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
@@ -45,7 +45,7 @@ module Avataree
       email = make_digest(email)
       email << ".json"
       params = options.to_param unless options.empty?
-      resulted_path = services_url << email
+      resulted_path = [services_url, email].join
       path = [resulted_path, params].compact.join("?")
       begin
         JSON.parse(open(path).read)
