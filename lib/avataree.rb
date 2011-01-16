@@ -20,8 +20,15 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # encoding: utf-8
-
-require File.join(File.dirname(__FILE__), *%w[avataree railtie]) if defined?(::Rails::Railtie)
+if defined?(::Rails::Railtie)
+  require File.join(File.dirname(__FILE__), *%w[avataree railtie])
+else
+  require 'avataree'
+  require 'avataree/helper'
+  require 'avataree/image'
+  require 'avataree/profile'
+  # require 'avataree/switch'
+end
 
 module Avataree
 end
