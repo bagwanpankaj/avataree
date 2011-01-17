@@ -33,7 +33,7 @@ here are options and there possible values:
 | *Options* | *What value do they take* |
 | :extension | extension of image to be fetched(default => jpg) |
 | :secure | boolean to/not to use https scheme (default => false) |
-| :s or :size | size of image (e.g 100x100) (default => 80x80) | 
+| :s or :size | size of image (e.g 100x100) (default => 80x80) |
 | :d or :default | default image to be used(e.g. 404, mm, identicon ..) |
 | :f or :forcedefault | takes 'y' or 'n' as argument. always force to load default image |
 | :r or :rating | image rating (e.g. g, pg, r, x) |
