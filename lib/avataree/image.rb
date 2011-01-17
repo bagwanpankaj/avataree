@@ -27,11 +27,10 @@ module Avataree
     
     include Helper
     
-    #image path for gravatar if not defined?
-    # IMAGES_PATH = "http://www.gravatar.com/avatar/" unless const_defined?("IMAGES_PATH")
-    
     #this method returns resulted path to be requested to gravatar. takes all argument as a hash
     #options:
+    #<tt>extension</tt> takes image type(e.g. jpg, png ...) :default => jpg
+    #<tt>secure</tt> takes boolean values to use https or not :default => false
     #<tt>s</tt> or <tt>size</tt> takes size in px (upto 512 px) :default => 80px x 80px
     #<tt>d</tt> or <tt>default</tt> takes default image. Also takes a url other options are:
     #   404: do not load any image if none is associated with the email hash, instead return an HTTP 404 (File Not Found) response

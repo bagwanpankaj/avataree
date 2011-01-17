@@ -28,9 +28,8 @@ module Avataree
   
   module ProfileServices
     
-    #image path for gravatar if not defined? 
-    # PROFILE_PATH = "http://www.gravatar.com/" unless const_defined?("PROFILE_PATH")
-    
+    #options:
+    # <tt>secure</tt> takes boolean values to use https or not :default => false
     # this method returns hash full of information provided by Gravatar.
     # This hash may contain
     # Email address marked up with class=email (only available via JS/client-side parsing due to spam-protection measures)
