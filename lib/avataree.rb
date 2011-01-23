@@ -27,8 +27,13 @@ else
   require 'avataree/helper'
   require 'avataree/image'
   require 'avataree/profile'
-  # require 'avataree/switch'
 end
 
 module Avataree
+  
+  #gem version
+  def self.version #:nodoc
+    "v" + File.read(File.join(File.dirname(__FILE__), '..', 'VERSION'))
+  end
+  
 end

@@ -25,7 +25,7 @@ module Avataree
   
   module ImageServices
     
-    include Helper
+    include Avataree::Helper
     
     #this method returns resulted path to be requested to gravatar. takes all argument as a hash
     #options:
@@ -50,11 +50,10 @@ module Avataree
     
     def gravatar_image_path(email, options = {})
       email = make_digest(email)
-      services_url = (options[:secure] ? Helper.secure_url_services : Helper.url_services) and options.delete(:secure)
-      email<<".#{options[:extension]}" and options.delete(:extension) if options[:extension]
-      params = options.to_param unless options.empty?
+      services_url = Helper.url_for_request(options.delete(:secure))
+      email<<".#{options.delete(:extension)}" if options[:extension]
       resulted_path = [services_url, "avatar/", email].join("")
-      [resulted_path, params].compact.join("?")
+      prepare_url_with_params(resulted_path, options)
     end
     alias_method :gravatar, :gravatar_image_path
     

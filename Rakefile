@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Ruby DSL for Gravatar profile and images}
   gem.email = "bagwanpankaj@gmail.com"
   gem.authors = ["Bagwan Pankaj (a.k.a modulo9)"]
-  gem.files = Dir.glob('lib/**/*.rb')
+  gem.files = Dir['lib/**/**.rb', 'VERSION', 'bin/**', 'LICENSE.txt']
 end
 Jeweler::RubygemsDotOrgTasks.new
 

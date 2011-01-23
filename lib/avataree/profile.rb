@@ -28,6 +28,8 @@ module Avataree
   
   module ProfileServices
     
+    include Avataree::Helper
+    
     #options:
     # <tt>secure</tt> takes boolean values to use https or not :default => false
     # this method returns hash full of information provided by Gravatar.
@@ -40,12 +42,11 @@ module Avataree
     # Personal Links
     # Image (main Gravatar) 
     def gravatar_profile(email, options = {})
-      services_url = (options[:secure] ? Helper.secure_url_services : Helper.url_services) and options.delete(:secure)
+      services_url = Helper.url_for_request(options.delete(:secure))
       email = make_digest(email)
       email << ".json"
-      params = options.to_param unless options.empty?
       resulted_path = [services_url, email].join
-      path = [resulted_path, params].compact.join("?")
+      path = prepare_url_with_params(resulted_path, options)
       begin
         JSON.parse(open(path).read)
       rescue => e
