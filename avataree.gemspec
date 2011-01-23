@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{avataree}
-  s.version = "0.6.2"
+  s.version = "0.6.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bagwan Pankaj (a.k.a modulo9)"]
-  s.date = %q{2011-01-18}
+  s.date = %q{2011-01-23}
   s.description = %q{Ruby DSL for Gravatar profile and images}
   s.email = %q{bagwanpankaj@gmail.com}
   s.extra_rdoc_files = [
@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
     "README.textile"
   ]
   s.files = [
+    "LICENSE.txt",
+    "VERSION",
     "lib/avataree.rb",
     "lib/avataree/helper.rb",
     "lib/avataree/image.rb",
