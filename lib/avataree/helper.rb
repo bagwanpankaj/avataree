@@ -80,7 +80,7 @@ module Avataree
       module MonkeyObject
       
         def blank?
-          instance_of? Array ? empty? : nil?
+          instance_of?(Array) ? empty? : nil?
         end unless Object.respond_to?(:blank?)
       
         def present?

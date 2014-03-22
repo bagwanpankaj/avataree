@@ -6,31 +6,31 @@ describe "Avataree" do
   describe "Helper" do
     before(:all) do
       @klass = Struct.new(:class)
-      @klass.instance_eval { include Helper }
+      @klass.instance_eval { include Avataree::Helper }
       @email = "test@test.com"
       @expected_digest = "b642b4217b34b1e8d3bd915fc65c4452"
       @hash = {:email => @email, :name => "testing"}
     end
     
-    it "should make a proper md5 digest for given email" do
+    it ".make_digest" do
       digest = @klass.new.make_digest(@email)
       digest.should_not be_empty
       digest.should == @expected_digest
     end
     
-    it "should be able to convert a hash into params" do
+    it "#to_param" do
       Hash.new.should respond_to :to_param
-      @hash.to_param.should == "name=testing&email=test@test.com"
+      @hash.to_param.should include("email=test@test.com")
     end
     
-    it "should respond to (secure) url services" do
-      Helper.should respond_to :url_services
-      Helper.should respond_to :secure_url_services
+    it "@secure_url_services and @url_services" do
+      Avataree::Helper.should respond_to :url_services
+      Avataree::Helper.should respond_to :secure_url_services
     end
     
-    it "should gives default (secure) url if not changed" do
-      Helper.secure_url_services.should == "https://secure.gravatar.com/"
-      Helper.url_services.should == "http://www.gravatar.com/"
+    it "default @secure_url_services and @url_services" do
+      Avataree::Helper.secure_url_services.should == "https://secure.gravatar.com/"
+      Avataree::Helper.url_services.should == "http://www.gravatar.com/"
     end
     
     # it "should allow to change (secure)urls" do
@@ -50,28 +50,29 @@ describe "Avataree" do
       @options = {:extension => "jpg", :size => "100x100", :rating => "g"}
     end
     
-    it "should respond to methods if included" do
+    it "#respond_to" do
       @klass.new.should respond_to :gravatar
       @klass.new.should respond_to :gravatar_image_path
     end
     
-    it "should return a valid gravatar url provided email" do
+    it "#gravatar" do
       response = @klass.new.gravatar(@email)
-      response.should == "http://www.gravatar.com/avatar/22bd03ace6f176bfe0c593650bcf45d8"
+      response.should == "http://www.gravatar.com/avatar/22bd03ace6f176bfe0c593650bcf45d8?"
     end
     
-    it "should return a valid gravatar url provided email and options" do
+    it "#include" do
       response = @klass.new.gravatar(@email, @options)
-      response.should == "#{Helper.url_services}avatar/22bd03ace6f176bfe0c593650bcf45d8.jpg?rating=g&size=100x100"
+      response.should include("size=100x100")
+      response.should include("rating=g")
     end
     
-    it "should return a secure url if given in options" do 
+    it "#scheme" do 
       response = @klass.new.gravatar(@email, @options.merge({:secure => true}))
       uri = URI.parse(response)
       uri.scheme.should == "https"
     end
     
-    it "should return a normal url if secure option set to false" do 
+    it "#scheme" do 
       response = @klass.new.gravatar(@email, @options.merge({:secure => false}))
       uri = URI.parse(response)
       uri.scheme.should_not == "https"
