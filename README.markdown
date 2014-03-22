@@ -1,5 +1,8 @@
 # Avataree
 
+[![Build Status](https://travis-ci.org/bagwanpankaj/avataree.svg?branch=master)](https://travis-ci.org/bagwanpankaj/avataree)
+[![Gem Version](https://badge.fury.io/rb/avataree.png)](http://badge.fury.io/rb/avataree)
+
 Ruby DSL for Gravatar profile and images.
 
 # What is it?
