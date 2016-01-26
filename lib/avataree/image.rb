@@ -1,5 +1,5 @@
 # Copyright (c) 2010 [Bagwan Pankaj]
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
 # "Software"), to deal in the Software without restriction, including
@@ -7,10 +7,10 @@
 # distribute, sublicense, and/or sell copies of the Software, and to
 # permit persons to whom the Software is furnished to do so, subject to
 # the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be
 # included in all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -22,11 +22,11 @@
 # encoding: utf-8
 
 module Avataree
-  
+
   module ImageServices
-    
+
     include Avataree::Helper
-    
+
     #this method returns resulted path to be requested to gravatar. takes all argument as a hash
     #options:
     #<tt>extension</tt> takes image type(e.g. jpg, png ...) :default => jpg
@@ -47,7 +47,7 @@ module Avataree
     #   x: may contain hardcore sexual imagery or extremely disturbing violence.
     #in addition to these it also takes extension as options that lets you define the image type you want.
     # <tt>extension</tt> default => jpg
-    
+
     def gravatar_image_path(email, options = {})
       email = make_digest(email)
       services_url = Helper.url_for_request(options.delete(:secure))
@@ -56,7 +56,7 @@ module Avataree
       prepare_url_with_params(resulted_path, options)
     end
     alias_method :gravatar, :gravatar_image_path
-    
+
   end
-  
+
 end
